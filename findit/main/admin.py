@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser
+from .models import CustomUser, Jobs
 
+@admin.register(Jobs)
+class JobsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'city', 'price', 'creator')
+    search_fields = ('title', 'city', 'creator__username')
+    list_filter = ('city', 'creator')
 
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
@@ -12,10 +17,9 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('role',)}),
     )
 
-    # Модификация формы для исключения 'admin' из выбора, если пользователь не является суперпользователем
     def formfield_for_choice_field(self, db_field, request, **kwargs):
         if db_field.name == "role":
             if not request.user.is_superuser:
-                # Исключаем 'admin' роль для не-суперпользователей
+
                 kwargs['choices'] = [choice for choice in CustomUser.ROLE_CHOICES if choice[0] != 'admin']
         return super().formfield_for_choice_field(db_field, request, **kwargs)

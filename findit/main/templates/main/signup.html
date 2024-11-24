@@ -9,19 +9,35 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Создайте аккаунт</h2>
+
         <form method="POST">
             {% csrf_token %}
             <div class="mb-3">
                 <label for="id_username" class="form-label">Имя пользователя</label>
                 <input type="text" name="username" id="id_username" class="form-control" required>
+                {% if form.username.errors %}
+                    <div class="text-danger">
+                        {{ form.username.errors|join:" " }}
+                    </div>
+                {% endif %}
             </div>
             <div class="mb-3">
                 <label for="id_password1" class="form-label">Пароль</label>
                 <input type="password" name="password1" id="id_password1" class="form-control" required>
+                {% if form.password1.errors %}
+                    <div class="text-danger">
+                        {{ form.password1.errors|join:" " }}
+                    </div>
+                {% endif %}
             </div>
             <div class="mb-3">
                 <label for="id_password2" class="form-label">Подтверждение пароля</label>
                 <input type="password" name="password2" id="id_password2" class="form-control" required>
+                {% if form.password2.errors %}
+                    <div class="text-danger">
+                        {{ form.password2.errors|join:" " }}
+                    </div>
+                {% endif %}
             </div>
             <div class="mb-3">
                 <label class="form-label">Роль</label><br>
@@ -33,6 +49,11 @@
                     <input type="radio" name="role" id="id_role_employer" value="employer" class="form-check-input" required>
                     <label for="id_role_employer" class="form-check-label">Работодатель</label>
                 </div>
+                {% if form.role.errors %}
+                    <div class="text-danger">
+                        {{ form.role.errors|join:" " }}
+                    </div>
+                {% endif %}
             </div>
             <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
         </form>
