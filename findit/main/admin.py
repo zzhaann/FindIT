@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Jobs, Application, Resume
+from .models import CustomUser, Jobs, Application, Resume, Message
+
 
 
 
@@ -40,3 +41,14 @@ class ResumeAdmin(admin.ModelAdmin):
     list_display = ('user', 'city', 'education', 'experience')
     search_fields = ('user__username', 'city', 'education')
     list_filter = ('city',)
+
+
+
+
+
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('sender', 'recipient', 'content', 'timestamp')
+    search_fields = ('sender__username', 'recipient__username', 'content')
+    list_filter = ('timestamp',)

@@ -6,7 +6,59 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserCreationForm, ResumeForm, JobsForm
 from .models import Application, Resume, Jobs
 from .models import CustomUser
-from django.shortcuts import get_object_or_404
+from .models import Message
+from .forms import MessageForm
+from django.shortcuts import render, redirect
+from django.db.models import Q
+
+
+@login_required
+def worker_chats(request):
+    # Получаем список работодателей, с которыми есть переписка
+    employers = CustomUser.objects.filter(
+        sent_messages__recipient=request.user
+    ).distinct()
+
+    return render(request, 'main/worker_chats.html', {'employers': employers})
+
+
+@login_required
+def chat_with_employer(request, employer_id):
+    # Получаем работодателя, с которым будет открыт чат
+    employer = get_object_or_404(CustomUser, id=employer_id)
+
+    # Фильтруем сообщения между работником и этим работодателем
+    messages = Message.objects.filter(
+        (Q(sender=request.user) & Q(recipient=employer)) |
+        (Q(sender=employer) & Q(recipient=request.user))
+    ).order_by('timestamp')
+
+    # Обрабатываем отправку нового сообщения
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        if content:
+            Message.objects.create(sender=request.user, recipient=employer, content=content)
+            return redirect('chat_with_employer', employer_id=employer.id)
+
+    return render(request, 'main/chat_with_employer.html', {'messages': messages, 'employer': employer})
+
+
+@login_required
+def chat_with_worker(request, worker_id):
+    worker = get_object_or_404(CustomUser, id=worker_id)
+    messages = Message.objects.filter(
+        (Q(sender=request.user) & Q(recipient=worker)) |
+        (Q(sender=worker) & Q(recipient=request.user))
+    ).order_by('timestamp')
+
+    if request.method == 'POST':
+        content = request.POST.get('content')
+        if content:
+            Message.objects.create(sender=request.user, recipient=worker, content=content)
+
+    return render(request, 'main/chat.html', {'worker': worker, 'messages': messages})
+
+
 
 
 

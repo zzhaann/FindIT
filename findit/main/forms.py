@@ -2,6 +2,24 @@ from django import forms
 from .models import CustomUser, Jobs, Resume
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render
+from django import forms
+from django.contrib.auth import get_user_model
+from .models import Message
+
+
+
+
+User = get_user_model()
+
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['recipient', 'content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 3}),
+        }
+
+
 
 
 def worker_profile(request, id):
