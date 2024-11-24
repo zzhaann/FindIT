@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ employer_profile.company_name }}</title>
+</head>
+<body>
+<h1>{{ employer_profile.company_name }}</h1>
+<p>{{ employer_profile.company_description }}</p>
+<p>Контактный email: {{ employer_profile.contact_email }}</p>
+<p>Контактный телефон: {{ employer_profile.contact_phone }}</p>
+
+{% if employer_profile.company_logo %}
+    <img src="{{ employer_profile.company_logo.url }}" alt="Company Logo">
+{% endif %}
+
+</body>
+</html>

@@ -55,7 +55,7 @@ ROOT_URLCONF = 'findit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,3 +126,23 @@ AUTH_USER_MODEL = 'main.CustomUser'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Для тестирования без отправки email
+
+
+
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+
+EMAIL_HOST_USER = 'zhanerkeegizbay@yandex.ru'
+EMAIL_HOST_PASSWORD = 'nycxbhcmpqroiung'
+DEFAULT_FROM_EMAIL = 'zhanerkeegizbay@yandex.ru'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+
+

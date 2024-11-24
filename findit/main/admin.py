@@ -1,11 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Jobs
+from .models import CustomUser, Jobs, Application, Resume
+
+
+
 
 @admin.register(Jobs)
 class JobsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'city', 'price', 'creator')
-    search_fields = ('title', 'city', 'creator__username')
+    list_display = ('title', 'city', 'price', 'company_name', 'contact_email', 'contact_phone', 'creator')
+    search_fields = ('title', 'city', 'company_name', 'creator__username')
     list_filter = ('city', 'creator')
 
 @admin.register(CustomUser)
@@ -23,3 +26,17 @@ class CustomUserAdmin(UserAdmin):
 
                 kwargs['choices'] = [choice for choice in CustomUser.ROLE_CHOICES if choice[0] != 'admin']
         return super().formfield_for_choice_field(db_field, request, **kwargs)
+
+
+@admin.register(Application)
+class ApplicationAdmin(admin.ModelAdmin):
+    list_display = ('job', 'worker', 'created_at')
+    search_fields = ('worker__username', 'job__title')
+    list_filter = ('job__city', 'created_at')
+
+
+@admin.register(Resume)
+class ResumeAdmin(admin.ModelAdmin):
+    list_display = ('user', 'city', 'education', 'experience')
+    search_fields = ('user__username', 'city', 'education')
+    list_filter = ('city',)

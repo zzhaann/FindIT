@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from django.contrib.auth.models import User
+
+
 
 
 class CustomUser(AbstractUser):
@@ -50,6 +53,11 @@ class Jobs(models.Model):
         ('Khromtau', 'Khromtau'),
         ('Nurin', 'Nurin'),
     ]
+    company_name = models.CharField(max_length=255)
+    company_description = models.TextField(default="Описание компании отсутствует")
+    company_logo = models.ImageField(upload_to='company_logos/', null=True, blank=True)
+    contact_email = models.EmailField()
+    contact_phone = models.CharField(max_length=20)
 
     title = models.CharField(max_length=255)
     task = models.TextField()
@@ -66,5 +74,37 @@ class Jobs(models.Model):
         return self.title
 
     class Meta:
-        verbose_name ='Job'
-        verbose_name_plural ='Jobs'
+        verbose_name = 'Job'
+        verbose_name_plural = 'Jobs'
+
+
+
+
+
+class Application(models.Model):
+    job = models.ForeignKey(Jobs, on_delete=models.CASCADE, related_name='applications')
+    worker = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='applications')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.worker.username} -> {self.job.title}"
+
+
+
+
+
+class Resume(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='resume')
+    city = models.CharField(max_length=100)
+    experience = models.TextField()
+    soft_skills = models.TextField()
+    programming_languages = models.TextField()
+    education = models.CharField(max_length=255)
+    portfolio = models.FileField(upload_to='portfolios/', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+
+
