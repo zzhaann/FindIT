@@ -10,9 +10,12 @@
 </head>
 <body>
 <div class="container mt-4">
-    <!-- Ссылка на профиль работника -->
+    <!-- Ссылка на профиль работника и кнопка чатов -->
     <h1>Jobs</h1>
-    <a href="{% url 'worker_profile' request.user.id %}" class="btn btn-info mb-3">Профиль: {{ request.user.username }}</a>
+    <div class="mb-3">
+        <a href="{% url 'worker_profile' request.user.id %}" class="btn btn-info me-2">Профиль: {{ request.user.username }}</a>
+        <a href="{% url 'worker_chats' %}" class="btn btn-primary">Чаты</a>
+    </div>
 
     <!-- Обработка уведомлений -->
     {% if messages %}
