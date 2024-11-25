@@ -27,7 +27,7 @@ class CustomUser(AbstractUser):
 
 class Jobs(models.Model):
     CITY_CHOICES = [
-        ('', ''),
+        ('', 'Выберите город'),
         ('Almaty', 'Almaty'),
         ('Astana', 'Astana'),
         ('Shymkent', 'Shymkent'),

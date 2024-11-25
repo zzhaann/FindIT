@@ -29,6 +29,7 @@ def worker_profile(request, id):
 
 
 
+
 class JobsForm(forms.ModelForm):
     class Meta:
         model = Jobs
