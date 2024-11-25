@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("/static/main/img/земля.jpg");
+    background-size: cover;
+    background-position: right center; /* Перемещает картину вправо */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.5); /* Уменьшена прозрачность */
+    backdrop-filter: blur(10px); /* Эффект размытия */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #fec107;
+    border-color: #fec107;
+    color: #212529;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
