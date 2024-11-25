@@ -1,0 +1,144 @@
+/* General styles */
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 1000px;
+    height: 700px;
+    background-color: rgb(254, 193, 7); /* Полупрозрачный оранжевый */
+
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Выровнять содержимое по центру */
+    text-align: center; /* Центрировать текст */
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 40px #fec107;
+}
+
+.container:hover {
+    box-shadow: 0 4px 40px #fec107; /* Красная подсветка */
+    transform: scale(1.05);
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+h2 + p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.form-control {
+    width: 100%; /* Поле ввода занимает всю ширину */
+    max-width: 100%;
+    text-align: center; /* Центрирование текста внутри поля */
+}
+
+.btn-primary {
+    background-color: white;
+    color: orange;
+    border-color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: red;
+    color: white;
+}
+
+.text-danger {
+    font-size: 0.875rem;
+    color: red;
+    margin-top: 5px;
+}
+
+/* Form-specific styles */
+form {
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    width: 600px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+button {
+    background: linear-gradient(145deg, #FFC300, #FFD700);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #FFD700, #FFC300);
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+button:active {
+    background: linear-gradient(145deg, #FFB000, #FFC000);
+    transform: translateY(1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

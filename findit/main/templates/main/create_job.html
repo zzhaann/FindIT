@@ -1,54 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Modern Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/css/create_job.css' %}">
 </head>
 <body>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="form-group mb-3">
-        {{ form_job.title.label_tag }}
-        {{ form_job.title }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.task.label_tag }}
-        {{ form_job.task }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.city.label_tag }}
-        {{ form_job.city }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.price.label_tag }}
-        {{ form_job.price }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.company_name.label_tag }}
-        {{ form_job.company_name }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.company_description.label_tag }}
-        {{ form_job.company_description }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.company_logo.label_tag }}
-        {{ form_job.company_logo }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.contact_email.label_tag }}
-        {{ form_job.contact_email }}
-    </div>
-    <div class="form-group mb-3">
-        {{ form_job.contact_phone.label_tag }}
-        {{ form_job.contact_phone }}
-    </div>
-    <button type="submit" class="btn btn-success">Сохранить</button>
-</form>
+<div class="container py-5">
+    <form method="post" enctype="multipart/form-data" class="shadow p-4 rounded">
+        {% csrf_token %}
+        <h2 class="text-center mb-4 text-dark">Job Application Form</h2>
+        <div class="form-group mb-3">
+            {{ form_job.title }}
+        </div>
+        <div class="form-group mb-3">
+            {{ form_job.task }}
+        </div>
+        <div class="form-group mb-3">
+            {{ form_job.city }}
+        </div>
+        <div class="form-group mb-3">
 
+            {{ form_job.price }}
+        </div>
+        <div class="form-group mb-3">
 
+            {{ form_job.company_name }}
+        </div>
+        <div class="form-group mb-3">
+            {{ form_job.company_description }}
+        </div>
+
+        <div class="form-group mb-3">
+
+            {{ form_job.contact_email }}
+        </div>
+        <div class="form-group mb-3">
+
+            {{ form_job.contact_phone }}
+        </div>
+        <button type="submit" class="btn btn-success w-100">Сохранить</button>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
