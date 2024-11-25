@@ -27,6 +27,7 @@ class CustomUser(AbstractUser):
 
 class Jobs(models.Model):
     CITY_CHOICES = [
+        ('', 'Выберите город'),
         ('Almaty', 'Almaty'),
         ('Astana', 'Astana'),
         ('Shymkent', 'Shymkent'),
@@ -58,14 +59,14 @@ class Jobs(models.Model):
         ('Nurin', 'Nurin'),
     ]
     company_name = models.CharField(max_length=255)
-    company_description = models.TextField(default="Описание компании отсутствует")
+    company_description = models.TextField()
     company_logo = models.ImageField(upload_to='company_logos/', null=True, blank=True)
     contact_email = models.EmailField()
     contact_phone = models.CharField(max_length=20)
 
     title = models.CharField(max_length=255)
     task = models.TextField()
-    city = models.CharField('City', max_length=100, choices=CITY_CHOICES)
+    city = models.CharField('City', max_length=100, choices=CITY_CHOICES, blank=False)
     price = models.CharField(max_length=100)
     creator = models.ForeignKey(
         settings.AUTH_USER_MODEL,

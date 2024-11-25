@@ -29,6 +29,7 @@ def worker_profile(request, id):
 
 
 
+
 class JobsForm(forms.ModelForm):
     class Meta:
         model = Jobs
@@ -39,9 +40,9 @@ class JobsForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Введите название'
+                'placeholder': 'Введите название работы'
             }),
-            "task": forms.Textarea(attrs={
+            "task": forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите описание работы'
             }),
@@ -56,7 +57,7 @@ class JobsForm(forms.ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Название компании'
             }),
-            "company_description": forms.Textarea(attrs={
+            "company_description": forms.TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Описание компании'
             }),

@@ -10,7 +10,12 @@ from .models import Message
 from .forms import MessageForm
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.conf import settings
 
+
+@login_required
+def employer_profile(request):
+    return render(request, 'main/employer_profile.html')
 
 @login_required
 def worker_chats(request):
@@ -124,7 +129,7 @@ def apply(request, job_id):
         send_mail(
             'Новый отклик на вашу работу',
             f'Пользователь {request.user.username} откликнулся на вашу работу: {job.title}.',
-            'noreply@findit.com',
+            settings.DEFAULT_FROM_EMAIL,  # Используем email из настроек
             [job.creator.email],
             fail_silently=False,
         )
@@ -132,7 +137,6 @@ def apply(request, job_id):
     else:
         messages.error(request, 'Только работники могут откликаться на вакансии.')
     return redirect('jobs')
-
 
 @login_required
 def create_job_and_company(request):
