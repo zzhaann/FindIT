@@ -1,0 +1,18 @@
+body {
+   background: url("/static/main/img/звезды.jpg");
+   font-family: Arial, sans-serif;
+}
+/* Основной фон страницы */
+.mb-4 {
+    font-size: 36px; /* Увеличенный размер шрифта */
+    color: #ffff; /* Цвет заголовка */
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 10px;
+    text-align: center; /* Центровка текста */
+
+}
+.btn-sm{
+   background-color: #ffd740;
+   color: #090417;
+   border-color: #ffd740;
+}
