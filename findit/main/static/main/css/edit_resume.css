@@ -7,11 +7,10 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff; /* Белый фон */
-    color: #000;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background: url("/static/main/img/звезды.jpg");
 }
 
 a {
@@ -25,9 +24,8 @@ a:hover {
 
 /* Шапка */
 .header {
-    background-color: #000000; /* Чёрный фон */
+    background-color: #ffffff; /* Чёрный фон */
     padding: 15px 0;
-    border-bottom: 1px solid #f1c40f;
 }
 
 .containermenu {
@@ -41,7 +39,7 @@ a:hover {
 .header_logo a {
     font-size: 24px;
     font-weight: bold;
-    color: #f1c40f; /* Жёлтый текст */
+    color: #000000; /* Жёлтый текст */
 }
 
 .header_menu .menu {
@@ -54,12 +52,12 @@ a:hover {
     font-size: 16px;
     padding: 8px 16px;
     border-radius: 5px;
-    color: #f1c40f; /* Жёлтый текст */
+    color: #ffffff; /* Жёлтый текст */
 }
 
 .header_menu .menu li a.work {
     background-color: #f1c40f; /* Жёлтый фон */
-    color: #000; /* Чёрный текст */
+    color: rgba(255, 253, 253, 0.8); /* Чёрный текст */
 }
 
 .header_menu .menu li a.work:hover {
@@ -80,10 +78,10 @@ a:hover {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #000; /* Чёрный фон */
+    background-color: rgba(255, 255, 255, 0.3); /* Чёрный фон */
     color: #f1c40f; /* Жёлтый текст */
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 /* Заголовок страницы */
@@ -110,8 +108,8 @@ a:hover {
 .resume-form select {
     width: 100%;
     padding: 10px;
-    background-color: #333; /* Тёмный фон */
-    color: #f1c40f; /* Жёлтый текст */
+    background-color: #ffffff; /* Тёмный фон */
+    color: #000000; /* Жёлтый текст */
     border: 1px solid #f1c40f;
     border-radius: 4px;
 }
@@ -156,10 +154,3 @@ a:hover {
 }
 
 /* Футер */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f1c40f; /* Жёлтый фон */
-    color: #000;
-    margin-top: auto;
-}
