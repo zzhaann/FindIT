@@ -1,0 +1,86 @@
+/* Основные стили */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #fff9c4, #ffe082, #ffca28);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Контейнер */
+.container {
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+}
+
+
+/* Заголовок */
+h1 {
+    font-size: 2rem;
+    color: #ffca28;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Работа: общий стиль */
+.job {
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Анимация при наведении */
+.job:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок компании */
+.job p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.job p strong {
+    color: #333;
+}
+
+/* Логотип компании */
+.job img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Разделитель */
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Анимация для плавного появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

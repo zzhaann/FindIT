@@ -1,19 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ employer_profile.company_name }}</title>
+    <title>Профиль работодателя</title>
+    <link rel="stylesheet" href="{% static 'main/css/employer_profile.css' %}">
 </head>
 <body>
-<h1>{{ employer_profile.company_name }}</h1>
-<p>{{ employer_profile.company_description }}</p>
-<p>Контактный email: {{ employer_profile.contact_email }}</p>
-<p>Контактный телефон: {{ employer_profile.contact_phone }}</p>
-
-{% if employer_profile.company_logo %}
-    <img src="{{ employer_profile.company_logo.url }}" alt="Company Logo">
-{% endif %}
-
+    <div class="container">
+        <h1> Ваш Профиль </h1>
+        {% for job in jobs %}
+        <div class="job">
+            <p><strong>Компания:</strong> {{ job.company_name }}</p>
+            <p><strong>Описание компании:</strong> {{ job.company_description }}</p>
+            <p><strong>Контактный email:</strong> {{ job.contact_email }}</p>
+            <p><strong>Контактный телефон:</strong> {{ job.contact_phone }}</p>
+            {% if job.company_logo %}
+                <img src="{{ job.company_logo.url }}" alt="Логотип компании">
+            {% endif %}
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
 </body>
 </html>
