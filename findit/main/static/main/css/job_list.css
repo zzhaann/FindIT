@@ -4,84 +4,21 @@ body {
      background-color: rgb(0, 0, 0);
 
 }
-header{
-      background-color: rgb(250, 250, 250);
-position: absolute;
-width: 1920px;
-height: 81px;
-left: 0px;
-top: 0px;
+.header{
+    background-color: white;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-/* Background+Shadow */
-.vaka {
-    position: absolute;
-    height: 416.78px;
-    left: 113px;
-    right: 670.34px;
-    top: 276px;
-
-    background: #FFFFFF;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.07);
-    border-radius: 15px;
-}
-/* FindIT */
-.heeda {
-    position: absolute;
-    width: 63px;
-    height: 30px;
-    left: 135px;
-    top: 24px;
-
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
+.container{
     display: flex;
+    justify-content: space-between;
     align-items: center;
-
-    color: #2E2E2E;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-
-/* Профиль */
-.tek {
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    left: 1100px;
-    top: 24px;
-
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-
-    color: #2E2E2E;
-
-
-}
-
-/* FindIT */
-.log {
-    position: absolute;
-    width: 63px;
-    height: 30px;
-    left: 135px;
-    top: 24px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    align-items: center;
-
-    color: #2E2E2E;
-}
 .header_logo a {
     text-decoration: none;
     font-size: 24px;
@@ -89,60 +26,118 @@ top: 0px;
     color: #333;
 }
 
-.chat{
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    left: 1000px;
-    top: 24px;
-
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+.header_menu .menu {
+    list-style: none;
     display: flex;
-    align-items: center;
-
-    color: #2E2E2E;
-
+    gap: 30px;
+    margin: 0;
+    padding: 0;
 }
 
-/* Frame 2 */
+.header_menu .menu li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+.header_menu .work {
+    background-color: #fec107;
+    color: #079ffe;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
 
-position: absolute;
-width: 200px;
-height: 72px;
-left: 1656px;
-top: 3px;
+.header_menu .login {
+    background-color: #ddd;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+ main {
+            height: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: url("/static/main/img/земля.jpg");
+            background-position: 0% ;
+            background-attachment: fixed;
+     gap: 20px;
 
+ }
 
+main .container {
+    display: flex;
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: center; /* Центровка элементов */
+    gap: 20px; /* Расстояние между объявлениями */
+    height: 700px; /* Фиксированная высота для области */
+    overflow-y: auto; /* Вертикальная прокрутка */
+    padding: 10px; /* Внутренний отступ */
+    background-color: rgb(0, 0,0, 0%); /* Фон области прокрутки */
+}
 
-/* Профиль */
+/* Стили для отдельных объявлений */
+.vaka {
+    background-color: rgba(217, 217, 217, 0.92); /* Светлый фон для блока */
+    border: 1px solid #ddd; /* Легкая рамка */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объема */
+    width: 100%; /* Занимает всю ширину контейнера */
+    max-width: 600px; /* Ограничение ширины */
+    height: 350px; /* Уменьшенная фиксированная высота */
+    display: flex; /* Центровка контента внутри */
+    flex-direction: column; /* Элементы располагаются по вертикали */
+    justify-content: space-between; /* Равномерное распределение внутри */
+    flex-shrink: 0; /* Запрещает сжатие элементов при прокрутке */
+}
 
-position: absolute;
-width: 89px;
-height: 30px;
-left: 21px;
-top: 24px;
+/* Увеличение заголовка */
+.vaka h3 {
+    font-size: 36px; /* Увеличенный размер шрифта */
+    color: #333; /* Цвет заголовка */
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 10px;
+    text-align: center; /* Центровка текста */
+}
 
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-display: flex;
-align-items: center;
+/* Текст объявления */
+.vaka p {
+    font-size: 20px; /* Уменьшенный размер шрифта */
+    color: #555; /* Цвет текста */
+    margin: 5px 0;
+    overflow: hidden; /* Скрывает лишний текст */
+    text-overflow: ellipsis; /* Добавляет "..." для длинных строк */
+    white-space: nowrap; /* Предотвращает перенос текста */
+}
 
-color: #2E2E2E;
+/* Изображение компании */
+.vaka img {
+    max-width: 100%; /* Изображение масштабируется по ширине блока */
+    max-height: 100px; /* Уменьшенная фиксированная высота для изображения */
+    object-fit: cover; /* Сохранение пропорций при обрезке */
+    margin: 10px 0;
+    border-radius: 4px;
+}
 
+/* Кнопка отклика */
+.vaka form {
+    margin-top: 10px;
+    text-align: right; /* Кнопка справа */
+}
 
+.vaka .btn {
+    padding: 8px 12px; /* Уменьшенные отступы */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-/* R 1 */
-
-position: absolute;
-width: 66px;
-height: 66px;
-left: 122px;
-top: 6px;
-
-background: url(R.png);
+.vaka .btn:hover {
+    background-color: #0056b3; /* Темный оттенок при наведении */
+}
