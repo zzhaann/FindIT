@@ -1,0 +1,132 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Белый фон */
+    color: #f1c40f; /* Желтый цвет текста */
+    margin: 0;
+    padding: 0;
+    a:link {color:#000000}
+a:visited {color:#000000}
+a:hover {color:#000000}
+a:active {color:#000000}
+}
+
+
+
+.header h1 {
+    color: #f1c40f; /* Желтый заголовок */
+    margin: 20px 0;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+/* Стили для контейнера */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #000000; /* Черный фон главного контейнера */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #f1c40f; /* Желтый текст внутри контейнера */
+}
+
+/* Стили для формы */
+.resume-form {
+    background-color: transparent;
+    padding: 20px;
+}
+
+.resume-form label {
+    color: #f1c40f; /* Желтый цвет текста меток */
+}
+
+.resume-form input,
+.resume-form textarea,
+.resume-form select {
+    background-color: #333; /* Темный фон полей */
+    color: #f1c40f; /* Желтый текст */
+    border: 1px solid #f1c40f; /* Желтая рамка */
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.resume-form input::placeholder,
+.resume-form textarea::placeholder {
+    color: #aaa; /* Серый текст для подсказок */
+}
+
+.resume-form input:focus,
+.resume-form textarea:focus,
+.resume-form select:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 5px #f39c12;
+}
+
+/* Кнопка */
+.btn-yellow {
+    background-color: #f1c40f;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.btn-yellow:hover {
+    background-color: #d4ac0d;
+    color: #000;
+}
+
+/* Шапка сайта */
+.header {
+    background-color: white; /* Белый фон шапки */
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.header_menu .menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.header_logo {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.work {
+    background-color: #fec107;
+    color: #079ffe;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.login {
+    background-color: #ddd;
+    color: #333;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* Общий контейнер для меню */
+.containermenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}

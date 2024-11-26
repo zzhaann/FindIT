@@ -14,7 +14,6 @@
     {% for job in jobs %}
     <div class="alert alert-info mt-4">
         <h3>{{ job.title }}</h3>
-         <a href="{% url 'employer_profile'  %}" class="btn btn-sm btn-primary ms-3">Profile</a>
         <p><strong>Город:</strong> {{ job.city }}</p>
         <p><strong>Цена:</strong> {{ job.price }}</p>
         <h4 class="mt-3">Отклики:</h4>
