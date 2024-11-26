@@ -4,6 +4,14 @@ body {
      background-color: rgb(0, 0, 0);
 
 }
+
+.tema {
+    font-size: 36px; /* Увеличенный размер шрифта */
+    color: #333; /* Цвет заголовка */
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 10px;
+    text-align: center;
+}
 .header{
     background-color: white;
     padding: 15px 0;
@@ -61,9 +69,10 @@ body {
             align-items: center;
             justify-content: center;
             background: url("/static/main/img/земля.jpg");
-            background-position: 0% ;
-            background-attachment: fixed;
-     gap: 20px;
+    background-size: 1200px;
+    background-position: 650px;
+    background-repeat: no-repeat;
+    background-color: #090417;
 
  }
 
@@ -76,18 +85,26 @@ main .container {
     overflow-y: auto; /* Вертикальная прокрутка */
     padding: 10px; /* Внутренний отступ */
     background-color: rgb(0, 0,0, 0%); /* Фон области прокрутки */
-}
 
+}
+ .Vak {
+    font-size: 36px; /* Увеличенный размер шрифта */
+    color: #ffff; /* Цвет заголовка */
+    font-weight: bold; /* Жирный текст */
+    margin-bottom: 10px;
+    text-align: center; /* Центровка текста */
+
+}
 /* Стили для отдельных объявлений */
 .vaka {
     background-color: rgba(217, 217, 217, 0.92); /* Светлый фон для блока */
     border: 1px solid #ddd; /* Легкая рамка */
-    border-radius: 8px; /* Закругленные углы */
+    border-radius: 20px; /* Закругленные углы */
     padding: 15px; /* Внутренние отступы */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объема */
     width: 100%; /* Занимает всю ширину контейнера */
-    max-width: 600px; /* Ограничение ширины */
-    height: 350px; /* Уменьшенная фиксированная высота */
+    max-width: 800px; /* Ограничение ширины */
+    height: 280px; /* Уменьшенная фиксированная высота */
     display: flex; /* Центровка контента внутри */
     flex-direction: column; /* Элементы располагаются по вертикали */
     justify-content: space-between; /* Равномерное распределение внутри */
@@ -96,7 +113,7 @@ main .container {
 
 /* Увеличение заголовка */
 .vaka h3 {
-    font-size: 36px; /* Увеличенный размер шрифта */
+    font-size: 28px; /* Увеличенный размер шрифта */
     color: #333; /* Цвет заголовка */
     font-weight: bold; /* Жирный текст */
     margin-bottom: 10px;
@@ -105,7 +122,7 @@ main .container {
 
 /* Текст объявления */
 .vaka p {
-    font-size: 20px; /* Уменьшенный размер шрифта */
+    font-size: 18px; /* Уменьшенный размер шрифта */
     color: #555; /* Цвет текста */
     margin: 5px 0;
     overflow: hidden; /* Скрывает лишний текст */
