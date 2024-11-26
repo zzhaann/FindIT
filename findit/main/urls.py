@@ -21,5 +21,6 @@ urlpatterns = [
     path('chat/<int:worker_id>/', views.chat_with_worker, name='chat_with_worker'),
     path('worker/chats/', views.worker_chats, name='worker_chats'),
     path('worker/chat/<int:employer_id>/', views.chat_with_employer, name='chat_with_employer'),
-    path('employer_profile', views.employer_profile, name='employer_profile')
+    path('employer_profile', views.employer_profile, name='employer_profile'),
+
 ]

@@ -15,7 +15,11 @@ from django.conf import settings
 
 @login_required
 def employer_profile(request):
-    return render(request, 'main/employer_profile.html')
+    # Получаем все вакансии, созданные текущим пользователем
+    jobs = Jobs.objects.filter(creator=request.user)
+
+    # Передаем список вакансий в шаблон
+    return render(request, 'main/employer_profile.html', {'jobs': jobs})
 
 @login_required
 def worker_chats(request):
