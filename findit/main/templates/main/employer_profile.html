@@ -16,9 +16,7 @@
             <p><strong>Описание компании:</strong> {{ job.company_description }}</p>
             <p><strong>Контактный email:</strong> {{ job.contact_email }}</p>
             <p><strong>Контактный телефон:</strong> {{ job.contact_phone }}</p>
-            {% if job.company_logo %}
-                <img src="{{ job.company_logo.url }}" alt="Логотип компании">
-            {% endif %}
+
         </div>
         <hr>
         {% endfor %}

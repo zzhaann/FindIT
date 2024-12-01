@@ -210,3 +210,14 @@ a:hover {
     color: #0056b3; /* Темнее при наведении */
 }
 
+.btn-danger {
+    background: #fec107; /* Красный фон */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}

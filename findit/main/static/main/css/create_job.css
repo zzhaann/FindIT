@@ -1,6 +1,6 @@
 /* General styles */
 body {
-    background-color: black;
+    background: url("/static/main/img/звезды.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,9 +9,9 @@ body {
 }
 
 .container {
-    width: 1000px;
+    width: 800px;
     height: 700px;
-    background-color: rgb(254, 193, 7); /* Полупрозрачный оранжевый */
+    background-color: rgba(255, 255, 255, 0.78); /* Полупрозрачный оранжевый */
 
     padding: 20px;
     border-radius: 10px;
@@ -21,11 +21,11 @@ body {
     align-items: center; /* Выровнять содержимое по центру */
     text-align: center; /* Центрировать текст */
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 40px #fec107;
+    box-shadow: 0 4px 40px #ffffff;
 }
 
 .container:hover {
-    box-shadow: 0 4px 40px #fec107; /* Красная подсветка */
+    box-shadow: 0 4px 40px rgba(255, 205, 52, 0.76); /* Красная подсветка */
     transform: scale(1.05);
 }
 
@@ -48,7 +48,7 @@ h2 + p {
 }
 
 .btn-primary {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.88);
     color: orange;
     border-color: white;
     width: 100%;

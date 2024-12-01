@@ -13,17 +13,16 @@
 
 
 <div class="container">
-    <div class="d-flex justify-content-between mb-4">
-        <!-- Заголовок -->
-        <h1>Ваши вакансии</h1>
-        <!-- Логотип профиля -->
-        <li>
-            <a href="{% url 'logout' %}" class="login">Выйти</a>
-        </li>
+    <div class="d-flex align-items-center mb-4">
+    <h1>Ваши вакансии</h1>
+    <div class="ms-auto d-flex align-items-center">
+        <a href="{% url 'logout' %}" class="btn btn-danger me-3">Выйти</a>
         <a href="{% url 'employer_profile' %}">
             <img src="{% static 'main/img/лого.jpg' %}" alt="Profile Logo" class="profile-logo">
         </a>
     </div>
+</div>
+
 
     {% for job in jobs %}
     <div class="alert alert-info mt-4">

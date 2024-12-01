@@ -1,7 +1,7 @@
 /* Основные стили */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #fff9c4, #ffe082, #ffca28);
+    background: url("/static/main/img/звезды.jpg");
     color: #333;
     margin: 0;
     padding: 0;
@@ -13,7 +13,7 @@ body {
 
 /* Контейнер */
 .container {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     padding: 20px;

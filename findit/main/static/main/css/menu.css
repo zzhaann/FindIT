@@ -66,8 +66,6 @@ body {
     padding: 8px 15px;
     border-radius: 5px;
 }
-
-/* Основной контент */
 main {
     flex: 1; /* Основное пространство занимает main */
     display: flex;
@@ -76,11 +74,12 @@ main {
     justify-content: center;
     background: url("/static/main/img/земля.jpg");
     background-size: contain; /* Масштабируем фон */
-    background-position: center;
     background-repeat: no-repeat;
-    background-color: #090417;
+    background-color: #0b051a;
     background-attachment: fixed; /* Фиксирует фон */
+    background-position: 550px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
 }
+
 
 /* Секция поиска */
 .search-section {
