@@ -6,8 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ worker.username }}'s Profile</title>
     <link rel="stylesheet" href="{% static 'main/css/worker_profile.css' %}">
+    <style>
+        /* Контейнер для уведомлений */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        /* Стиль уведомления */
+        .alert {
+            background-color: #4caf50; /* Зеленый цвет для успеха */
+            color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideDownFade 0.5s ease forwards, fadeOut 0.5s ease 2.5s forwards;
+        }
+
+        /* Анимация появления */
+        @keyframes slideDownFade {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Анимация исчезновения */
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
+ <video autoplay muted loop id="background-video">
+        <source src="/static/main/img/земля.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
 <div class="container mt-4">
     <h1>{{ worker.username }}</h1>
 
@@ -17,19 +70,33 @@
         <p><strong>Soft Skills:</strong> {{ resume.soft_skills }}</p>
         <p><strong>Programming Languages:</strong> {{ resume.programming_languages }}</p>
         <p><strong>Education:</strong> {{ resume.education }}</p>
-
-        {% if resume.portfolio %}
-            <p><strong>Portfolio:</strong> <a href="{{ resume.portfolio.url }}">View Portfolio</a></p>
-        {% else %}
-            <p>No portfolio available.</p>
-        {% endif %}
     {% else %}
         <p>No resume available for this user.</p>
     {% endif %}
 
     <!-- Кнопка редактирования профиля -->
     <a href="{% url 'edit_resume' %}" class="btn btn-primary mt-3">Редактировать</a>
+    <a href="{% url 'jobs' %}" class="btn btn-primary mt-3">Вернуться к вакансиям</a>
 </div>
+
+<!-- Уведомления -->
+{% if messages %}
+    <div class="notification-container" id="notification-container">
+        {% for message in messages %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<script>
+    // Удаление уведомлений через 3 секунды
+    setTimeout(() => {
+        const notifications = document.querySelectorAll('.alert');
+        notifications.forEach(notification => notification.remove());
+    }, 3000);
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

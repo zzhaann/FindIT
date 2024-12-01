@@ -131,3 +131,11 @@ body {
     background: #ffb300;
     transform: scale(1.05);
 }
+
+
+textarea {
+    resize: none;
+}
+textarea.form-control {
+    resize: none;
+}

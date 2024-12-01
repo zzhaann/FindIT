@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background: url("/static/main/img/звезды.jpg");
+    background: url("/static/main/img/земля.jpg");
 }
 
 a {
@@ -52,12 +52,12 @@ a:hover {
     font-size: 16px;
     padding: 8px 16px;
     border-radius: 5px;
-    color: #ffffff; /* Жёлтый текст */
+    color: #000000; /* Жёлтый текст */
 }
 
 .header_menu .menu li a.work {
     background-color: #f1c40f; /* Жёлтый фон */
-    color: rgba(255, 253, 253, 0.8); /* Чёрный текст */
+    color: rgb(0, 0, 0); /* Чёрный текст */
 }
 
 .header_menu .menu li a.work:hover {
@@ -75,10 +75,11 @@ a:hover {
 
 /* Контейнер */
 .container {
-    max-width: 800px;
+    height: 580px;
+    width: 700px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.3); /* Чёрный фон */
+    background-color: rgba(0, 0, 0, 0.7); /* Чёрный фон */
     color: #f1c40f; /* Жёлтый текст */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
@@ -96,7 +97,7 @@ a:hover {
 .resume-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
 }
 
 .resume-form label {
@@ -153,4 +154,24 @@ a:hover {
     text-align: center;
 }
 
-/* Футер */
+
+
+.custom-btn {
+    padding: 12px 24px;
+    background-color: #fec107;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+
+
+

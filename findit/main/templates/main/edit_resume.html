@@ -11,26 +11,16 @@
 <header class="header">
     <div class="containermenu">
         <div class="header_logo">
-         <a href="#">FindIT</a>
+         <a href="{% url 'index' %}">FindIT</a>
         </div>
         <div class="header_menu">
-
+                <a href="{% url 'worker_profile' user.id %}" class="custom-btn">Вернуться в профиль</a>
         </div>
     </div>
 </header>
 
 <div class="container">
     <h1 class="page-title">Редактирование резюме</h1>
-
-    {% if messages %}
-        <div>
-            {% for message in messages %}
-                <div class="alert">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
     <form method="post" enctype="multipart/form-data" class="resume-form">
         {% csrf_token %}
         {{ form.as_p }}
@@ -38,8 +28,6 @@
     </form>
 </div>
 
-<footer class="footer">
-    <p>FindIT &copy; 2024</p>
-</footer>
+
 </body>
 </html>

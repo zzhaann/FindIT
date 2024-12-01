@@ -16,7 +16,7 @@ class MessageForm(forms.ModelForm):
         model = Message
         fields = ['recipient', 'content']
         widgets = {
-            'content': forms.Textarea(attrs={'rows': 3}),
+            'content': forms.TextInput(attrs={'rows': 3}),
         }
 
 
@@ -90,6 +90,12 @@ class CustomUserCreationForm(UserCreationForm):
 class ResumeForm(forms.ModelForm):
     class Meta:
         model = Resume
-        fields = ['city', 'experience', 'soft_skills', 'programming_languages', 'education', 'portfolio']
+        fields = ['city', 'experience', 'soft_skills', 'programming_languages', 'education']
+        widgets = {
+            'experience': forms.TextInput(attrs={'class': 'no-resize'}),
+            'soft_skills': forms.TextInput(attrs={'class': 'no-resize'}),
+            'programming_languages': forms.TextInput(attrs={'class': 'no-resize'}),
+
+        }
 
 

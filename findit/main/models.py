@@ -109,7 +109,7 @@ class Resume(models.Model):
     soft_skills = models.TextField()
     programming_languages = models.TextField()
     education = models.CharField(max_length=255)
-    portfolio = models.FileField(upload_to='portfolios/', null=True, blank=True)
+
 
     def __str__(self):
         return self.user.username
