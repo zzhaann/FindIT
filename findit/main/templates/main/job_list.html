@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     {% load static %}
     <meta charset="UTF-8">
@@ -11,14 +11,43 @@
 </head>
 <body>
     <header class="header">
-        <div class="container"><!--easd-->
+        <div class="container">
             <div class="header_logo">
                 <a href="#">FindIT</a>
             </div>
             <div class="header_menu">
                 <ul class="menu">
-                    <li><a href="{% url 'worker_profile' request.user.id %}" class="work">Профиль: {{ request.user.username }}</a></li>
-                    <li><a href="{% url 'worker_chats' %}" class="login">Чаты</a></li>
+                    {% if user.is_authenticated %}
+                        {% if user.role == 'worker' %}
+                            <li>
+                                <a href="{% url 'worker_profile' request.user.id %}" class="work">
+                                    Профиль: {{ request.user.username }}
+                                </a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'worker_chats' %}" class="login">
+                                Чаты
+                            </a>
+                        </li>
+                        <!-- Кнопка выхода -->
+                        <li>
+                            <a href="{% url 'logout' %}" class="login">
+                                Выйти
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" class="login">
+                                Войти
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'signup' %}" class="login">
+                                Регистрация
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -31,26 +60,56 @@
             </div>
             {% if jobs %}
                 {% for el in jobs %}
-                    <div class="vaka">
+                    <div class="vaka mb-4 p-3 border rounded">
                         <h3>{{ el.title }}</h3>
-                        <p>{{ el.task }}</p>
-                        <p>{{ el.city }}</p>
-                        <p>{{ el.price }}</p>
+                        <p><strong>Описание:</strong> {{ el.task }}</p>
+                        <p><strong>Город:</strong> {{ el.city }}</p>
+                        <p><strong>Зарплата:</strong> {{ el.price }}</p>
                         {% if el.company_logo %}
-                            <img src="{{ el.company_logo.url }}" alt="Company Logo">
+                            <img src="{{ el.company_logo.url }}" alt="Company Logo" class="img-fluid mb-3">
                         {% endif %}
-                        <form method="post" action="{% url 'apply' el.id %}">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-primary">Откликнуться</button>
-                        </form>
+
+                        {% if user.is_authenticated and user.role == 'worker' %}
+                            <!-- Форма отклика -->
+                            <form method="post" action="{% url 'apply' el.id %}" class="apply-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">Откликнуться</button>
+                            </form>
+                        {% endif %}
                     </div>
                 {% endfor %}
             {% else %}
-                <p>No jobs found.</p>
+                <p class="text-center">Вакансий не найдено.</p>
             {% endif %}
         </div>
     </main>
 
+    <!-- Toast Notification -->
+    {% if messages %}
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+            <div id="applyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Уведомление</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+                </div>
+                <div class="toast-body">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            {% if messages %}
+                const toastEl = document.getElementById('applyToast');
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+            {% endif %}
+        });
+    </script>
 </body>
 </html>

@@ -11,7 +11,6 @@ urlpatterns = [
     path('create/', views.create_job_and_company, name='create_job'),
     path('apply/<int:job_id>/', views.apply, name='apply'),
     path('dashboard/', views.employer_dashboard, name='employer_dashboard'),
-    path('resume/', views.create_resume, name='create_resume'),
     path('worker/<int:id>/', views.worker_profile, name='worker_profile'),
     path('edit_resume/', views.edit_resume, name='edit_resume'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='main/password_reset.html'), name='password_reset'),
@@ -22,5 +21,5 @@ urlpatterns = [
     path('worker/chats/', views.worker_chats, name='worker_chats'),
     path('worker/chat/<int:employer_id>/', views.chat_with_employer, name='chat_with_employer'),
     path('employer_profile', views.employer_profile, name='employer_profile'),
-
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

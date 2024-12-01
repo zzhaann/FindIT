@@ -87,14 +87,18 @@ class Jobs(models.Model):
 
 
 class Application(models.Model):
-    job = models.ForeignKey(Jobs, on_delete=models.CASCADE, related_name='applications')
+    job = models.ForeignKey('Jobs', on_delete=models.CASCADE, related_name='applications')
     worker = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='applications')
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        # Обеспечивает уникальность отклика работника на одну вакансию
+        constraints = [
+            models.UniqueConstraint(fields=['job', 'worker'], name='unique_job_worker_application')
+        ]
+
     def __str__(self):
         return f"{self.worker.username} -> {self.job.title}"
-
-
 
 
 

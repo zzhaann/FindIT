@@ -1,28 +1,34 @@
-*{
+/* Сброс стилей для всех элементов */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body{
-    background-color: #ffffff;
+/* Основные стили для тела страницы */
+body {
+    display: flex;
+    flex-direction: column; /* Расположение элементов по вертикали */
+    height: 100vh; /* Высота 100% экрана */
+    margin: 0;
+    overflow-x: hidden;
 }
 
-.header{
+/* Стили для хедера */
+.header {
     background-color: white;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
+    max-width: 100%;
 }
-
 
 .header_logo a {
     text-decoration: none;
@@ -61,71 +67,66 @@ body{
     border-radius: 5px;
 }
 
-
-     main {
-    height: 600px;
+/* Основной контент */
+main {
+    flex: 1; /* Основное пространство занимает main */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background: url("/static/main/img/земля.jpg");
-    background-size: 1200px;
-    background-position: 650px;
+    background-size: contain; /* Масштабируем фон */
+    background-position: center;
     background-repeat: no-repeat;
     background-color: #090417;
+    background-attachment: fixed; /* Фиксирует фон */
+}
+
+/* Секция поиска */
+.search-section {
+    margin-top: 21px;
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 500px;
+    background-color: white;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #fec107;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #fec107;
+}
+
+.portal-text {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.portal-text span {
+    color: #fec107;
+}
+
+/* Стили для футера */
+.footer {
+    background-color: #fec107;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Для корректного позиционирования */
 }
 
 
-        .search-section {
-            margin-top: 21px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .search-input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 500px;
-            background-color: white;
-        }
-
-        .search-button {
-            padding: 10px 20px;
-            background-color: #fec107;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .search-button:hover {
-            background-color: #fec107;
-        }
-
-        .portal-text {
-            font-size: 40px;
-            font-weight: bold;
-            color:white;
-        }
-
-        .portal-text span {
-            color: #fec107;
-        }
-
-
-       footer {
-        background-color: #fec107;
-        color: white;
-        padding: 20px;
-        text-align: left;
-    }
-
-    footer p {
-        margin: 5px 0;
-        line-height: 1;
-    }
-
-    footer i {
-        margin-right: 8px;
-    }

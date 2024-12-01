@@ -101,20 +101,6 @@ def edit_resume(request):
 
 
 
-@login_required
-def create_resume(request):
-    if request.method == 'POST':
-        form = ResumeForm(request.POST, request.FILES)
-        if form.is_valid():
-            resume = form.save(commit=False)
-            resume.user = request.user
-            resume.save()
-            return redirect('jobs')
-    else:
-        form = ResumeForm()
-
-    return render(request, 'main/create_resume.html', {'form': form})
-
 
 @login_required
 def employer_dashboard(request):
@@ -124,22 +110,38 @@ def employer_dashboard(request):
     return redirect('jobs')
 
 
+
+
+
 @login_required
 def apply(request, job_id):
     job = get_object_or_404(Jobs, id=job_id)
-    if request.method == 'POST' and request.user.role == 'worker':
+
+    # Проверка, что пользователь является работником
+    if request.user.role != 'worker':
+        messages.error(request, 'Только работники могут откликаться на вакансии.')
+        return redirect('jobs')
+
+    # Проверяем, что работник уже не откликнулся на эту вакансию
+    if Application.objects.filter(job=job, worker=request.user).exists():
+        messages.error(request, 'Вы уже откликнулись на эту вакансию.')
+        return redirect('jobs')
+
+    if request.method == 'POST':
         Application.objects.create(job=job, worker=request.user)
 
+        # Отправка уведомления работодателю
         send_mail(
-            'Новый отклик на вашу работу',
+            'Новый отклик на вашу вакансию',
             f'Пользователь {request.user.username} откликнулся на вашу работу: {job.title}.',
-            settings.DEFAULT_FROM_EMAIL,  # Используем email из настроек
+            settings.DEFAULT_FROM_EMAIL,
             [job.creator.email],
             fail_silently=False,
         )
-        messages.success(request, 'Вы успешно откликнулись!')
-    else:
-        messages.error(request, 'Только работники могут откликаться на вакансии.')
+
+        # Уведомление для работника
+        messages.success(request, 'Вы успешно откликнулись на вакансию!')
+
     return redirect('jobs')
 
 @login_required
@@ -165,9 +167,27 @@ def create_job_and_company(request):
 
 
 
+@login_required
 def job(request):
     jobs = Jobs.objects.all()
-    return render(request, 'main/job_list.html', {'title': 'Работа', 'jobs': jobs})
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        jobs = jobs.filter(
+            Q(title__icontains=search_query) |
+            Q(task__icontains=search_query) |
+            Q(city__icontains=search_query)
+        )
+
+    user_role = request.user.role  # Получаем роль пользователя
+
+    return render(request, 'main/job_list.html', {
+        'title': 'Работа',
+        'jobs': jobs,
+        'user_role': user_role,  # Передаем роль в шаблон
+        'search_query': search_query,
+    })
+
 
 
 def signup(request):
@@ -177,8 +197,8 @@ def signup(request):
             user = form.save()
             login(request, user)
             if user.role == 'employer':
-                return redirect('create_job')
-            return redirect('create_resume')
+                return redirect('employer_dashboard')
+            return redirect('jobs')
 
         for field, errors in form.errors.items():
             for error in errors:
@@ -206,6 +226,6 @@ def login_view(request):
     return render(request, 'main/login.html')
 
 
-@login_required
+
 def index(request):
     return render(request, 'main/index.html')

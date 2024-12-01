@@ -143,6 +143,7 @@ DEFAULT_FROM_EMAIL = 'zhanerkeegizbay@yandex.ru'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+LOGOUT_REDIRECT_URL = '/'
 
 
 

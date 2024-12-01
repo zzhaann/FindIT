@@ -17,6 +17,9 @@
         <!-- Заголовок -->
         <h1>Ваши вакансии</h1>
         <!-- Логотип профиля -->
+        <li>
+            <a href="{% url 'logout' %}" class="login">Выйти</a>
+        </li>
         <a href="{% url 'employer_profile' %}">
             <img src="{% static 'main/img/лого.jpg' %}" alt="Profile Logo" class="profile-logo">
         </a>
@@ -62,7 +65,7 @@
     {% endfor %}
 
     <!-- Кнопка для добавления вакансий -->
-    <a href="{% url 'create_job' %}" class="btn btn-primary mt-4">Добавить еще</a>
+    <a href="{% url 'create_job' %}" class="btn btn-primary mt-4">Добавить вакансию</a>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
