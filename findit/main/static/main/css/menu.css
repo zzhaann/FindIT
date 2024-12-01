@@ -35,6 +35,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: #333;
+    margin-left: 130px;
 }
 
 .header_menu .menu {
@@ -65,6 +66,7 @@ body {
     color: #333;
     padding: 8px 15px;
     border-radius: 5px;
+    margin-right: 10px;
 }
 main {
     flex: 1; /* Основное пространство занимает main */

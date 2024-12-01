@@ -112,6 +112,12 @@ def employer_dashboard(request):
 
 
 
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Jobs, Application
 
 @login_required
 def apply(request, job_id):
@@ -167,7 +173,6 @@ def create_job_and_company(request):
 
 
 
-@login_required
 def job(request):
     jobs = Jobs.objects.all()
     search_query = request.GET.get('search', '')
@@ -179,15 +184,14 @@ def job(request):
             Q(city__icontains=search_query)
         )
 
-    user_role = request.user.role  # Получаем роль пользователя
+    user_role = request.user.role if request.user.is_authenticated else None
 
     return render(request, 'main/job_list.html', {
         'title': 'Работа',
         'jobs': jobs,
-        'user_role': user_role,  # Передаем роль в шаблон
+        'user_role': user_role,
         'search_query': search_query,
     })
-
 
 
 def signup(request):

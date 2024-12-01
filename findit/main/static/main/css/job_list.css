@@ -1,160 +1,296 @@
-/* Frame 1 */
+/* Общий стиль */
 body {
-    font-family: Arial, sans-serif;
-     background-color: rgb(0, 0, 0);
-
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    background: url("/static/main/img/земля.jpg");
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Обеспечивает минимум высоты 100% экрана */
+    display: flex;
+    flex-direction: column;
 }
 
-.tema {
-    font-size: 36px; /* Увеличенный размер шрифта */
-    color: #333; /* Цвет заголовка */
-    font-weight: bold; /* Жирный текст */
-    margin-bottom: 10px;
-    text-align: center;
-}
-.header{
+/* Шапка */
+.header {
     background-color: white;
     padding: 15px 0;
     border-bottom: 1px solid #ddd;
+    justify-content: space-between; /* Разделение элементов по краям */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    height: 80px;
 }
 
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
-.header_logo a {
+.header-logo a {
     text-decoration: none;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
     color: #333;
 }
 
-.header_menu .menu {
+/* Размещение логотипа слева, а кнопок справа */
+.header-menu .menu {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 25px;
     margin: 0;
     padding: 0;
+    justify-content: flex-end; /* Кнопки справа */
 }
 
-.header_menu .menu li a {
+.header-menu .menu li {
+    display: inline-block;
+}
+
+.header-menu .menu li a {
     text-decoration: none;
     font-size: 16px;
-    color: #333;
-    transition: all 0.3s ease;
-}
-.header_menu .work {
-    background-color: #fec107;
-    color: #079ffe;
+    color: black;
     padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: block;
+    margin-top: -35px;
 }
 
-.header_menu .login {
-    background-color: #ddd;
-    color: #333;
-    padding: 8px 15px;
-    border-radius: 5px;
-}
- main {
-            height: 700px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: url("/static/main/img/земля.jpg");
-    background-size: 1200px;
-    background-position: 650px;
-    background-repeat: no-repeat;
-    background-color: #090417;
-
- }
-
-main .container {
-    display: flex;
-    flex-direction: column; /* Элементы располагаются вертикально */
-    align-items: center; /* Центровка элементов */
-    gap: 20px; /* Расстояние между объявлениями */
-    height: 700px; /* Фиксированная высота для области */
-    overflow-y: auto; /* Вертикальная прокрутка */
-    padding: 10px; /* Внутренний отступ */
-    background-color: rgb(0, 0,0, 0%); /* Фон области прокрутки */
-
-}
- .Vak {
-    font-size: 36px; /* Увеличенный размер шрифта */
-    color: #ffff; /* Цвет заголовка */
-    font-weight: bold; /* Жирный текст */
-    margin-bottom: 10px;
-    text-align: center; /* Центровка текста */
-
-}
-/* Стили для отдельных объявлений */
-.vaka {
-    background-color: rgba(217, 217, 217, 0.92); /* Светлый фон для блока */
-    border: 1px solid #ddd; /* Легкая рамка */
-    border-radius: 20px; /* Закругленные углы */
-    padding: 15px; /* Внутренние отступы */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень для объема */
-    width: 100%; /* Занимает всю ширину контейнера */
-    max-width: 800px; /* Ограничение ширины */
-    height: 280px; /* Уменьшенная фиксированная высота */
-    display: flex; /* Центровка контента внутри */
-    flex-direction: column; /* Элементы располагаются по вертикали */
-    justify-content: space-between; /* Равномерное распределение внутри */
-    flex-shrink: 0; /* Запрещает сжатие элементов при прокрутке */
+.header-menu .menu li a:hover {
+    background-color: #f0f0f0;
+    color: #ff8a00;
 }
 
-/* Увеличение заголовка */
-.vaka h3 {
-    font-size: 28px; /* Увеличенный размер шрифта */
-    color: #333; /* Цвет заголовка */
-    font-weight: bold; /* Жирный текст */
-    margin-bottom: 10px;
-    text-align: center; /* Центровка текста */
+/* Основное содержимое */
+.main-content {
+    flex: 1; /* Позволяет основному контенту занимать доступное пространство */
+    padding: 60px 0;
 }
-
-/* Текст объявления */
-.vaka p {
-    font-size: 18px; /* Уменьшенный размер шрифта */
-    color: #555; /* Цвет текста */
-    margin: 5px 0;
-    overflow: hidden; /* Скрывает лишний текст */
-    text-overflow: ellipsis; /* Добавляет "..." для длинных строк */
-    white-space: nowrap; /* Предотвращает перенос текста */
-}
-
-/* Изображение компании */
-.vaka img {
-    max-width: 100%; /* Изображение масштабируется по ширине блока */
-    max-height: 100px; /* Уменьшенная фиксированная высота для изображения */
-    object-fit: cover; /* Сохранение пропорций при обрезке */
-    margin: 10px 0;
-    border-radius: 4px;
-}
-
-/* Кнопка отклика */
-.vaka form {
-    margin-top: 10px;
-    text-align: right; /* Кнопка справа */
-}
-
-.vaka .btn {
-    padding: 8px 12px; /* Уменьшенные отступы */
-    background-color: #007bff;
+/* Стиль кнопки "Подробнее" */
+.job-card .btn-info {
+    background-color: #fec107; /* Желтый цвет */
     color: white;
     border: none;
-    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-card .btn-info:hover {
+    background-color: #e5b806; /* Темный желтый при наведении */
+    transform: scale(1.05);
+}
+
+/* Полупрозрачный контейнер для работ */
+.job-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Белый с прозрачностью */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: auto; /* Обеспечивает прокрутку внутри контейнера */
+    max-height: 400px; /* Ограничение высоты для удобства */
+    width: 1000px;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+
+.job-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Для списка работ */
+.jobs-list {
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.56);
+    overflow-x: hidden;
+    overflow-y: auto; /* Вертикальная прокрутка */
+    max-height: 70vh; /* Ограничение высоты на 70% от высоты окна */
+
+}
+
+
+/* Полоса прокрутки */
+.jobs-list::-webkit-scrollbar {
+    width: 12px; /* Ширина полосы прокрутки */
+    background-color: #000000; /* Фон полосы прокрутки */
+}
+
+/* Ползунок (scrollbar thumb) */
+.jobs-list::-webkit-scrollbar-thumb {
+    background-color: #000000; /* Цвет ползунка */
+    border-radius: 6px; /* Закругленные углы */
+    border: 3px solid #f9f9f9; /* Цвет обрамления (фон контейнера) */
+}
+
+/* Полоса при наведении мышью */
+.jobs-list::-webkit-scrollbar-thumb:hover {
+    background-color: #e5b806; /* Цвет ползунка при наведении */
+}
+
+/* Трек (track) — область позади ползунка */
+.jobs-list::-webkit-scrollbar-track {
+    background-color: rgba(230, 230, 230, 0.47); /* Цвет трека */
+    border-radius: 6px;
+}
+
+
+/* Кнопка и футер */
+.job-card .details-btn {
+    padding: 10px 20px;
+    background-color: #fec107;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.job-card .details-btn:hover {
+    background-color: #e5b806;
+    transform: scale(1.05);
+}
+
+.job-card .details-btn:active {
+    background-color: #d4a105;
+    transform: scale(0.98);
+}
+
+
+
+/* Кнопки */
+.custom-btnn {
+    background-color: #b4b4b4;
+}
+
+.custom-btn {
+    padding: 12px 24px;
+    background-color: #fec107;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+.custom-btn:hover {
+    background-color: #e5b806;
+    transform: scale(1.05);
+}
+
+.custom-btn:active {
+    background-color: #d4a105;
+    transform: scale(0.98);
+}
+
+.custom-btn:focus {
+    outline: 2px solid rgba(254, 193, 7, 0.5);
+}
+
+/* Секция поиска */
+.search-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: -60px;
+}
+
+.search-input {
+    width: 500px;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.search-input:focus {
+    border-color: #e6ac05;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+}
+
+/* Модальное окно */
+.modal-dialog {
+    max-width: 600px;
+}
+
+.modal-body {
+    font-size: 16px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.apply-form {
+    display: inline-block;
+}
+
+.apply-form button {
+    background-color: #fec107;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+    border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.vaka .btn:hover {
-    background-color: #0056b3; /* Темный оттенок при наведении */
+.apply-form button:hover {
+    background-color: #e5b806;
 }
+
+/* Стили для кнопки модального окна "Откликнуться" */
+.modal-footer a {
+    background-color: #fec107;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-footer a:hover {
+    background-color: #e5b806;
+}
+
+
+/* Кастомизация успеха */
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-color: #d6e9c6;
+}
+
+/* Кастомизация ошибки */
+.alert-danger {
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #ebccd1;
+}
+
+/* Кастомизация для вашей темы */
+.custom-alert {
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+
