@@ -13,6 +13,20 @@ body {
     background: url("/static/main/img/земля.jpg");
 }
 
+.main_resume{
+    flex: 1; /* Основное пространство занимает main */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("/static/main/img/земля.jpg");
+    background-size: contain; /* Масштабируем фон */
+    background-repeat: no-repeat;
+    background-color: #0b051a;
+    background-attachment: fixed; /* Фиксирует фон */
+    background-position: 550px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
+}
+
 a {
     text-decoration: none;
     color: #000; /* Чёрный цвет ссылок */
@@ -79,7 +93,7 @@ a:hover {
     width: 700px;
     margin: 50px auto;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7); /* Чёрный фон */
+    background-color: rgba(255, 255, 255, 0.4); /* Чёрный фон */
     color: #f1c40f; /* Жёлтый текст */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
