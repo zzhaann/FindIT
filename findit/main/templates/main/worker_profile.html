@@ -74,9 +74,11 @@
         <p>No resume available for this user.</p>
     {% endif %}
 
-    <!-- Кнопка редактирования профиля -->
-    <a href="{% url 'edit_resume' %}" class="btn btn-primary mt-3">Редактировать</a>
-    <a href="{% url 'jobs' %}" class="btn btn-primary mt-3">Вернуться к вакансиям</a>
+    <!-- Кнопки редактирования и возврата (для работодателя) -->
+    {% if user.is_authenticated and user == worker %}
+        <a href="{% url 'edit_resume' %}" class="btn btn-primary mt-3">Редактировать</a>
+        <a href="{% url 'jobs' %}" class="btn btn-primary mt-3">Вернуться к вакансиям</a>
+    {% endif %}
 </div>
 
 <!-- Уведомления -->

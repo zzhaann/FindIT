@@ -24,7 +24,7 @@ body {
     background-repeat: no-repeat;
     background-color: #0b051a;
     background-attachment: fixed; /* Фиксирует фон */
-    background-position: 550px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
+    background-position: 700px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
 }
 
 a {

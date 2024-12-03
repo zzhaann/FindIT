@@ -4,23 +4,13 @@ body {
     background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-
-
-}
-
-.main-content{
-
-    flex: 1; /* Основное пространство занимает main */
+    background: url("/static/main/img/земля.jpg");
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Обеспечивает минимум высоты 100% экрана */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: url("/static/main/img/земля.jpg");
-    background-size: contain; /* Масштабируем фон */
-    background-repeat: no-repeat;
-    background-color: #06030e;
-    background-attachment: fixed; /* Фиксирует фон */
-    background-position: 550px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
 }
 
 /* Шапка */
@@ -112,7 +102,7 @@ body {
 /* Для списка работ */
 .jobs-list {
     margin-top: 10px;
-    background-color: rgba(5, 2, 2, 0.4);
+    background-color: rgba(0, 0, 0, 0.56);
     overflow-x: hidden;
     overflow-y: auto; /* Вертикальная прокрутка */
     max-height: 70vh; /* Ограничение высоты на 70% от высоты окна */
@@ -173,7 +163,7 @@ body {
 
 /* Кнопки */
 .custom-btnn {
-    background-color: #ffcd34;
+    background-color: #b4b4b4;
 }
 
 .custom-btn {
@@ -191,7 +181,7 @@ body {
 }
 
 .custom-btn:hover {
-    background-color: #e3b505;
+    background-color: #e5b806;
     transform: scale(1.05);
 }
 
@@ -304,3 +294,7 @@ body {
 }
 
 
+.text-center{
+    color: white;
+    font-size: 24px;
+}

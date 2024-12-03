@@ -80,6 +80,7 @@ def worker_profile(request, id):
 
     return render(request, 'main/worker_profile.html', {'worker': worker, 'resume': resume})
 
+
 @login_required
 def edit_resume(request):
     user = request.user

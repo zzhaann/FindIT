@@ -79,7 +79,7 @@ main {
     background-repeat: no-repeat;
     background-color: rgba(11, 5, 26, 0.99);
     background-attachment: fixed; /* Фиксирует фон */
-    background-position: 550px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
+    background-position: 650px center; /* Сдвиг вправо на 1200px, вертикальное выравнивание по центру */
 }
 
 

@@ -58,3 +58,7 @@ body {
     background-color: #fec107; /* Светло-желтый для второстепенных кнопок */
     border-color: #fec107;
 }
+
+.text-muted {
+    color: white !important; /* Заменяем цвет текста на белый */
+}
