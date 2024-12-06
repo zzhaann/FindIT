@@ -10,7 +10,6 @@ from .models import Message
 from .forms import MessageForm
 from django.shortcuts import render, redirect
 from django.db.models import Q
-from django.conf import settings
 
 
 @login_required

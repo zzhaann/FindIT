@@ -23,7 +23,8 @@ body {
     height: 80px;
 }
 
-.header-logo a {
+.header-logo a,
+.header-logo form {
     text-decoration: none;
     font-size: 28px;
     font-weight: bold;
@@ -44,7 +45,8 @@ body {
     display: inline-block;
 }
 
-.header-menu .menu li a {
+.header-menu .menu li a,
+.header-menu .menu li form {
     text-decoration: none;
     font-size: 16px;
     color: black;
@@ -52,8 +54,10 @@ body {
     border-radius: 6px;
     transition: all 0.3s ease;
     display: block;
-    margin-top: -35px;
+    margin-top: -38px;
+    margin-bottom: 0;
 }
+
 
 .header-menu .menu li a:hover {
     background-color: #f0f0f0;
@@ -163,7 +167,19 @@ body {
 
 /* Кнопки */
 .custom-btnn {
-    background-color: #b4b4b4;
+    margin-top: -8px;
+    margin-left: -20px;
+    padding: 10px 15px;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
 }
 
 .custom-btn {
@@ -180,17 +196,20 @@ body {
     display: inline-block;
 }
 
-.custom-btn:hover {
+.custom-btn:hover,
+.custom-btnn:hover {
     background-color: #e5b806;
     transform: scale(1.05);
 }
 
-.custom-btn:active {
+.custom-btn:active,
+.custom-btnn:active {
     background-color: #d4a105;
     transform: scale(0.98);
 }
 
-.custom-btn:focus {
+.custom-btn:focus,
+.custom-btnn:focus{
     outline: 2px solid rgba(254, 193, 7, 0.5);
 }
 
@@ -298,3 +317,17 @@ body {
     color: white;
     font-size: 24px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

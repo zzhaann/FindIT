@@ -14,14 +14,18 @@
 
 <div class="container">
     <div class="d-flex align-items-center mb-4">
-    <h1>Ваши вакансии</h1>
-    <div class="ms-auto d-flex align-items-center">
-        <a href="{% url 'logout' %}" class="btn btn-danger me-3">Выйти</a>
-        <a href="{% url 'employer_profile' %}">
-            <img src="{% static 'main/img/лого.jpg' %}" alt="Profile Logo" class="profile-logo">
-        </a>
+        <h1>Ваши вакансии</h1>
+        <div class="ms-auto d-flex align-items-center">
+            <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="custom-btn">Выйти</button>
+            </form>
+
+            <a href="{% url 'employer_profile' %}">
+                <img src="{% static 'main/img/лого.jpg' %}" alt="Profile Logo" class="profile-logo">
+            </a>
+        </div>
     </div>
-</div>
 
 
     {% for job in jobs %}
@@ -36,7 +40,8 @@
         </button>
     </div>
 
-    <div class="modal fade" id="modal{{ job.id }}" tabindex="-1" aria-labelledby="modalLabel{{ job.id }}" aria-hidden="true">
+    <div class="modal fade" id="modal{{ job.id }}" tabindex="-1" aria-labelledby="modalLabel{{ job.id }}"
+         aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -52,7 +57,8 @@
                             <strong>{{ application.worker.username }}</strong>
                         </a>
                         <!-- Кнопка для чата -->
-                        <a href="{% url 'chat_with_worker' worker_id=application.worker.id %}" class="btn btn-sm btn-primary">Чат</a>
+                        <a href="{% url 'chat_with_worker' worker_id=application.worker.id %}"
+                           class="btn btn-sm btn-primary">Чат</a>
                     </div>
                     {% empty %}
                     <p>Пока нет откликов</p>

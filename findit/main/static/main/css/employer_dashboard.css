@@ -223,3 +223,9 @@ a:hover {
 }
 
 
+.custom-btn{
+
+    color: white;
+    margin-right: 10px;
+    font-size: 12px;
+}
