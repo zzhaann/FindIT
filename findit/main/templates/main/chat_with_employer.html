@@ -58,5 +58,70 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let lastMessageId = 0; // ID последнего сообщения, известного клиенту
+    const chatBody = document.querySelector('.chat-body');
+    const textarea = document.querySelector('textarea[name="content"]');
+    const form = document.querySelector('form');
+
+    function fetchNewMessages() {
+        const urlParams = new URLSearchParams({
+            last_message_id: lastMessageId,
+            employer_id: '{{ employer.id }}', // ID работодателя
+        });
+
+        fetch(`/get_new_messages/?${urlParams}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.messages && data.messages.length > 0) {
+                    data.messages.forEach(message => {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.classList.add('mb-3');
+
+                        if (message.sender === '{{ request.user.username }}') {
+                            messageDiv.innerHTML = `
+                                <div class="text-end">
+                                    <div class="d-inline-block p-3 bg-warning text-dark rounded-pill">
+                                        ${message.content}
+                                    </div>
+                                    <small class="d-block text-muted">${message.timestamp}</small>
+                                </div>
+                            `;
+                        } else {
+                            messageDiv.innerHTML = `
+                                <div class="text-start">
+                                    <div class="d-inline-block p-3 bg-light text-dark rounded-pill border border-dark">
+                                        <strong>${message.sender}</strong>: ${message.content}
+                                    </div>
+                                    <small class="d-block text-muted">${message.timestamp}</small>
+                                </div>
+                            `;
+                        }
+
+                        chatBody.appendChild(messageDiv);
+                        chatBody.scrollTop = chatBody.scrollHeight; // Прокрутка вниз
+                    });
+
+                    // Обновляем ID последнего сообщения
+                    lastMessageId = data.messages[data.messages.length - 1].id;
+                }
+            })
+            .catch(error => console.error('Ошибка при получении сообщений:', error))
+            .finally(() => {
+                setTimeout(fetchNewMessages, 1000); // Повторяем запрос через 1 секунду
+            });
+    }
+
+    // Запускаем Long Polling
+    fetchNewMessages();
+
+    // Отправка сообщения при нажатии Enter
+    textarea.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            form.submit();
+        }
+    });
+</script>
 </body>
 </html>

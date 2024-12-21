@@ -22,4 +22,5 @@ urlpatterns = [
     path('worker/chat/<int:employer_id>/', views.chat_with_employer, name='chat_with_employer'),
     path('employer_profile', views.employer_profile, name='employer_profile'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('get_new_messages/', views.get_new_messages, name='get_new_messages'),
 ]

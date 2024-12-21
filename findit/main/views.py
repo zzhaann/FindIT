@@ -10,6 +10,50 @@ from .models import Message
 from .forms import MessageForm
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from time import sleep
+from .models import CustomUser, Message
+
+@login_required
+def get_new_messages(request):
+    last_message_id = request.GET.get('last_message_id', 0)  # ID последнего сообщения, известного клиенту
+    employer_id = request.GET.get('employer_id', None)  # ID работодателя
+    worker_id = request.GET.get('worker_id', None)  # ID работника
+
+    # Получаем собеседника
+    if employer_id:
+        other_user = get_object_or_404(CustomUser, id=employer_id)
+    elif worker_id:
+        other_user = get_object_or_404(CustomUser, id=worker_id)
+    else:
+        return JsonResponse({'error': 'Invalid parameters'}, status=400)
+
+    # Ожидаем появления новых сообщений
+    for _ in range(30):  # Максимум 30 секунд ожидания
+        new_messages = Message.objects.filter(
+            (Q(sender=other_user) & Q(recipient=request.user)) |
+            (Q(sender=request.user) & Q(recipient=other_user)),
+            id__gt=last_message_id
+        ).order_by('timestamp')
+
+        if new_messages.exists():
+            messages_data = [
+                {
+                    'id': msg.id,
+                    'sender': msg.sender.username,
+                    'content': msg.content,
+                    'timestamp': msg.timestamp.strftime('%Y-%m-%d %H:%M:%S'),
+                }
+                for msg in new_messages
+            ]
+            return JsonResponse({'messages': messages_data})
+        sleep(1)  # Ждем 1 секунду перед повторной проверкой
+
+    return JsonResponse({'messages': []})  # Если сообщений нет, возвращаем пустой массив
+
 
 
 @login_required
@@ -51,6 +95,8 @@ def chat_with_employer(request, employer_id):
     return render(request, 'main/chat_with_employer.html', {'messages': messages, 'employer': employer})
 
 
+from django.shortcuts import redirect
+
 @login_required
 def chat_with_worker(request, worker_id):
     worker = get_object_or_404(CustomUser, id=worker_id)
@@ -63,9 +109,9 @@ def chat_with_worker(request, worker_id):
         content = request.POST.get('content')
         if content:
             Message.objects.create(sender=request.user, recipient=worker, content=content)
+        return redirect('chat_with_worker', worker_id=worker.id)  # Перенаправление
 
     return render(request, 'main/chat.html', {'worker': worker, 'messages': messages})
-
 
 
 
